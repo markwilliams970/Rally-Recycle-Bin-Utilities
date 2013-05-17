@@ -93,18 +93,17 @@ begin
   (1...input.size).each { |i| rows << CSV::Row.new(header, input[i]) }
   
   number_processed = 0
-  number_deleted = 0 
 
   # Proceed through rows in input CSV and delete Recycle Bin items contained therein
   puts "Deleting selected entries from the Recycle Bin..."
   
   rows.each do |row|
     delete_recycle_bin_entry(header, row)
-    number_deleted += 1
+    number_processed += 1
   end
   
   puts
-  puts "Deleted a total of #{number_deleted} items from the Recycle Bin."
+  puts "Processed a total of #{number_processed} items from the Recycle Bin."
   puts "Complete!"
 
 end
