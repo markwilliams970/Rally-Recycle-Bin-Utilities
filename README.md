@@ -31,6 +31,10 @@ This script will take as input a CSV file of the exact same field format as is o
 - Lastly, run the rally_delete_recyclebin_items.rb script, which will PERMANENTLY DELETE only those items specified in your input CSV
 - You will be prompted to confirm each deletion attempt
 
+rally_empty_recycle_bin.rb
+================================
+Script will iterate through _all_ items in Rally Recycle bin for specified Workspace and prompt the user to confirm permanent deletion of the item of interest.
+
  Requires:
 
  - Ruby 1.9.3 or higher
