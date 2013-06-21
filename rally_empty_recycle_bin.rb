@@ -46,7 +46,7 @@ begin
 
   @rally = RallyAPI::RallyRestJson.new(config)
 
-  # Lookup source Test Folder
+  # Query for all recycle bin items
   recycle_bin_query = RallyAPI::RallyQuery.new()
   recycle_bin_query.type = :recyclebin
   recycle_bin_query.fetch = true
