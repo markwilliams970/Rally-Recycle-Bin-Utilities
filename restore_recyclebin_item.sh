@@ -84,7 +84,10 @@ printf "\n\n"
 # Strip out Rally hostname
 RALLY_HOST=`echo ${RALLY_URL} | awk -F "/" '{print $3}'`
 
-curl "${RALLY_URL}/slm/recyclebin/restore.sp?cpoid=${PROJECT_OID}&projectScopeUp=true&projectScopeDown=true&_slug=/recyclebin" \
+# Form Restore URL
+RESTORE_URL="${RALLY_URL}/slm/recyclebin/restore.sp?cpoid=${PROJECT_OID}&projectScopeUp=true&projectScopeDown=true&_slug=/recyclebin"
+
+curl ${RESTORE_URL} \
 	-b authcookie.txt \
 	-H "Origin: ${RALLY_URL}" \
 	-H "Accept-Encoding: gzip,deflate,sdch" \
