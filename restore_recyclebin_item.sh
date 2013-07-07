@@ -118,7 +118,6 @@ printf "\n\n"
 
 # Delete Session Cookie
 echo "Removing Session Cookie file: authcookie.txt"
-echo "Cleaning up temp file."
 rm ./authcookie.txt
 
 # Complete!
