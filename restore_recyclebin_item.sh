@@ -85,6 +85,7 @@ printf "\n\n"
 RALLY_HOST=`echo ${RALLY_URL} | awk -F "/" '{print $3}'`
 
 # Form Restore URL
+# This endpoint is NOT SUPPORTED and is NOT a Webservices API Endpoint
 RESTORE_URL="${RALLY_URL}/slm/recyclebin/restore.sp?cpoid=${PROJECT_OID}&projectScopeUp=true&projectScopeDown=true&_slug=/recyclebin"
 
 curl ${RESTORE_URL} \
