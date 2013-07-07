@@ -30,6 +30,11 @@
 # the script cannot ascertain the success/failure of the restore attempt
 # from the server response. Thus you will need to look in the Rally UI
 # to confirm the success/failure of the restore attempt.
+#
+# Note for Rally On-Premise:
+# Because this script does use the Webservices v2.0 Authorize endpoint
+# (supported), it will only work for Rally On-Premise versions 2013.1
+# and above.
 
 ###########################################
 # USER ENVIRONMENT VARIABLES              #
