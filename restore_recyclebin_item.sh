@@ -109,7 +109,7 @@ RESTORE_URL="${RALLY_URL}/slm/recyclebin/restore.sp?_slug=/recyclebin"
 
 # Attempt Restore using curl
 # The lengthy request headers are formulated to simulate the request
-# that a browser client issues as closely as possible
+# that a browser client issues from the Rally UI as closely as possible
 
 curl ${RESTORE_URL} \
 	-s -S \
