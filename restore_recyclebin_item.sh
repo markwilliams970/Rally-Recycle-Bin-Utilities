@@ -64,12 +64,11 @@ RALLY_PASSWORD="t0p\$3cr3t"
 # the password variable should be set as follows:
 # RALLY_PASSWORD="P@\$\$word"
 
-# Object ID's for Rally Project, and OID of Recycle Bin Item to be restored
+# Object ID and Formatted ID for Recycle Bin Item to be restored
 # Recycle Bin Entry OIDs may be easily obtained using this utility:
 # https://github.com/markwilliams970/Rally-Recycle-Bin-Utilities/blob/master/rally_recyclebin_report.rb
 
-PROJECT_OID="12345678910"
-RESTORE_OID="10987654321"
+RESTORE_OID="12345678910"
 RESTORE_FORMATTED_ID="TC123"
 
 # NOTE: RESTORE_FORMATTED_ID is not used except as an output descriptor
@@ -82,18 +81,21 @@ RESTORE_FORMATTED_ID="TC123"
 
 # Obtain session cookie
 # Uses WSAPI v2.0 Authorization endpoint. This endpoint _is_ supported.
-echo "Authenticating with Rally - obtaining Session Cookie"
+echo "1. Authenticating with Rally - obtaining Session Cookie"
 echo "Using Rally UserID: ${RALLY_USERNAME}"
-echo "===================================================="
-echo
+echo "======================================================="
+printf "\n\n"
 
+# Authentication Session Info
+echo "2. Authentication Session ID Info from Webservices API:"
+echo "======================================================="
 curl -u "${RALLY_USERNAME}:${RALLY_PASSWORD}" "${RALLY_URL}/slm/webservice/v2.0/security/authorize" -c authcookie.txt
+printf "\n\n"
 
 # Attempting Restore
-printf "\n\n"
-echo "Connecting to Rally - Attempting Restore of Recycle Bin Item:"
+echo "3. Connecting to Rally - Attempting Restore of Recycle Bin Item:"
 echo "Recycle Bin Item ObjectID: ${RESTORE_OID}"
-echo "===================================================="
+echo "================================================================"
 printf "\n\n"
 
 # Strip out Rally hostname
@@ -101,9 +103,10 @@ RALLY_HOST=`echo ${RALLY_URL} | awk -F "/" '{print $3}'`
 
 # Form Restore URL
 # This endpoint is NOT SUPPORTED and is NOT a Webservices API Endpoint
-RESTORE_URL="${RALLY_URL}/slm/recyclebin/restore.sp?cpoid=${PROJECT_OID}&projectScopeUp=true&projectScopeDown=true&_slug=/recyclebin"
+RESTORE_URL="${RALLY_URL}/slm/recyclebin/restore.sp?_slug=/recyclebin"
 
 curl ${RESTORE_URL} \
+	-s -S \
 	-b authcookie.txt \
 	-H "Origin: ${RALLY_URL}" \
 	-H "Accept-Encoding: gzip,deflate,sdch" \
@@ -119,15 +122,17 @@ curl ${RESTORE_URL} \
 	> /dev/null
 
 # Attempt complete. Notify and cleanup.
-printf "\n\n"
-echo "Restore attempt complete. Check Rally for Item: ${RESTORE_FORMATTED_ID}"
+echo "4. Restore attempt complete. Check Rally for Item: ${RESTORE_FORMATTED_ID}"
 echo "to verify successful restoration." 
+echo "=================================================================="
 printf "\n\n"
 
 # Delete Session Cookie
-echo "Removing Session Cookie file: authcookie.txt"
+echo "5. Removing Session Cookie file: authcookie.txt"
+echo "================================================"
 rm ./authcookie.txt
 printf "\n\n"
 
 # Complete!
-echo "Finished!"
+echo "6. Finished!"
+echo "============"
