@@ -21,7 +21,7 @@
 # UI (which frequently contains thousands of items), in order to find the
 # item and restore via the UI.
 #
-# This script uses an un-documented and un-supported restore endpoint that is
+# This script uses an UN-DOCUMENTED and UNSUPPORTED restore endpoint that is
 # intended to be accessed only from a web browser client via the Rally UI.
 # The endpoint used by this script is subject to change and as a result 
 # this script could break without any prior notice.
