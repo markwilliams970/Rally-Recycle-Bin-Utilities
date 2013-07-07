@@ -130,7 +130,7 @@ curl ${RESTORE_URL} \
 # Attempt complete. Notify and cleanup.
 echo "4. Restore attempt complete. Check Rally for Item: ${RESTORE_FORMATTED_ID}"
 echo "to verify successful restoration." 
-echo "=================================================================="
+echo "========================================================================="
 printf "\n\n"
 
 # Delete Session Cookie
