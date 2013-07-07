@@ -39,3 +39,14 @@ Script will iterate through _all_ items in Rally Recycle bin for specified Works
 
  - Ruby 1.9.3 or higher
  - rally_api 0.9.2 or higher
+
+restore_recylebin_item.sh
+=========================
+Bash/curl script that uses an un-supported and un-documented web endpoint
+that makes it easier to restore a single Recycle Bin Item without having to
+hunt for it via the Rally UI.
+
+ Requires:
+
+ - Bourne shell
+ - curl
