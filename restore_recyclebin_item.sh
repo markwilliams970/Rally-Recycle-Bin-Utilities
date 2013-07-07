@@ -12,6 +12,7 @@
 #############################
 # IMPORTANT!! PLEASE READ!! #
 #############################
+#
 # Note: Recycle Bin items cannot be restored using Rally's REST webservices API
 # This curl script is intended to provide a more convenient means of
 # restoring an item with a known ObjectID and Formatted ID from the
@@ -33,7 +34,12 @@
 # USER ENVIRONMENT VARIABLES              #
 ###########################################
 
+# Rally Server URL
+RALLY_URL="https://rally1.rallydev.com"
+
 # Rally credentials
+# NOTE: User must be a Subscription or Workspace Administrator in order
+# to restore items from the Recycle Bin.
 RALLY_USERNAME="user@company.com"
 RALLY_PASSWORD="t0p\$3cr3t"
 
@@ -66,36 +72,44 @@ echo "Using Rally UserID: ${RALLY_USERNAME}"
 echo "===================================================="
 echo
 
-curl -u "${RALLY_USERNAME}:${RALLY_PASSWORD}" https://rally1.rallydev.com/slm/webservice/v2.0/security/authorize -c authcookie.txt
+curl -u "${RALLY_USERNAME}:${RALLY_PASSWORD}" "${RALLY_URL}/slm/webservice/v2.0/security/authorize" -c authcookie.txt
 
 # Attempting Restore
+printf "\n\n"
 echo "Connecting to Rally - Attempting Restore of Recycle Bin Item:"
 echo "Recycle Bin Item ObjectID: ${RESTORE_OID}"
 echo "===================================================="
-echo "\n\n"
+printf "\n\n"
 
-curl "https://rally1.rallydev.com/slm/recyclebin/restore.sp?cpoid=${PROJECT_OID}&projectScopeUp=true&projectScopeDown=true&_slug=/recyclebin" \
+# Strip out Rally hostname
+RALLY_HOST=`echo ${RALLY_URL} | awk -F "/" '{print $3}'`
+
+curl "${RALLY_URL}/slm/recyclebin/restore.sp?cpoid=${PROJECT_OID}&projectScopeUp=true&projectScopeDown=true&_slug=/recyclebin" \
 	-b authcookie.txt \
-	-H "Origin: https://rally1.rallydev.com" \
+	-H "Origin: ${RALLY_URL}" \
 	-H "Accept-Encoding: gzip,deflate,sdch" \
-	-H "Host: rally1.rallydev.com" \
+	-H "Host: ${RALLY_HOST}" \
 	-H "Accept-Language: en-US,en;q=0.8" \
 	-H "X-Requested-By: Rally" \
 	-H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
 	-H "Accept: */*" \
-	-H "Referer: https://rally1.rallydev.com/" \
+	-H "Referer: ${RALLY_URL}/" \
 	-H "X-Requested-With: XMLHttpRequest" \
 	-H "Connection: keep-alive" \
-	--data "oid=${RESTORE_OID}"
+	--data "oid=${RESTORE_OID}" \
+	> restore_output.txt
 
 # Attempt complete. Notify and cleanup.
-echo "\n\n"
+printf "\n\n"
 echo "Restore attempt complete. Check Rally for Item: ${RESTORE_FORMATTED_ID}"
 echo "to verify successful restoration." 
+printf "\n\n"
 
 # Delete Session Cookie
 echo "Removing Session Cookie file: authcookie.txt"
+echo "Cleaning up temp file."
 rm ./authcookie.txt
+rm ./restore_output.txt
 
 # Complete!
 echo "Finished!"
