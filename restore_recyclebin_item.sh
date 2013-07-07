@@ -20,6 +20,14 @@
 # Rally Recycle Bin, without having to navigate through the Rally Recycle Bin
 # UI (which frequently contains thousands of items), in order to find the
 # item and restore via the UI.
+# 
+# The following Ruby Script, also part of this repo:
+# https://github.com/markwilliams970/Rally-Recycle-Bin-Utilities/blob/master/rally_recyclebin_report.rb
+# Provides a CSV summary of the entire contents of the Recycle Bin for a
+# Rally Workspace, thus making it much easier to _find_ a Recycle Bin Item.
+# Once found, this shell script (me = this) makes it much easier to _restore_
+# an item from the Recycle Bin without having to hunt for it
+# page-by-page in the Rally UI.
 #
 # This script uses an UN-DOCUMENTED and UNSUPPORTED restore endpoint that is
 # intended to be accessed only from a web browser client via the Rally UI.
