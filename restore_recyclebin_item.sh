@@ -73,6 +73,7 @@ RESTORE_FORMATTED_ID="TC123"
 #########################################
 
 # Obtain session cookie
+# Uses WSAPI v2.0 Authorization endpoint. This endpoint _is_ supported.
 echo "Authenticating with Rally - obtaining Session Cookie"
 echo "Using Rally UserID: ${RALLY_USERNAME}"
 echo "===================================================="
