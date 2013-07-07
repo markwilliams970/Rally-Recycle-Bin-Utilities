@@ -97,7 +97,7 @@ curl "${RALLY_URL}/slm/recyclebin/restore.sp?cpoid=${PROJECT_OID}&projectScopeUp
 	-H "X-Requested-With: XMLHttpRequest" \
 	-H "Connection: keep-alive" \
 	--data "oid=${RESTORE_OID}" \
-	> restore_output.txt
+	> /dev/null
 
 # Attempt complete. Notify and cleanup.
 printf "\n\n"
@@ -109,7 +109,6 @@ printf "\n\n"
 echo "Removing Session Cookie file: authcookie.txt"
 echo "Cleaning up temp file."
 rm ./authcookie.txt
-rm ./restore_output.txt
 
 # Complete!
 echo "Finished!"
