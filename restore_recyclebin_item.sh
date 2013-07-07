@@ -107,6 +107,10 @@ RALLY_HOST=`echo ${RALLY_URL} | awk -F "/" '{print $3}'`
 # This endpoint is NOT SUPPORTED and is NOT a Webservices API Endpoint
 RESTORE_URL="${RALLY_URL}/slm/recyclebin/restore.sp?_slug=/recyclebin"
 
+# Attempt Restore using curl
+# The lengthy request headers are formulated to simulate the request
+# that a browser client issues as closely as possible
+
 curl ${RESTORE_URL} \
 	-s -S \
 	-b authcookie.txt \
