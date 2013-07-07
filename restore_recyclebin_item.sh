@@ -89,7 +89,9 @@ printf "\n\n"
 # Authentication Session Info
 echo "2. Authentication Session ID Info from Webservices API:"
 echo "======================================================="
-curl -u "${RALLY_USERNAME}:${RALLY_PASSWORD}" "${RALLY_URL}/slm/webservice/v2.0/security/authorize" -c authcookie.txt
+curl -u "${RALLY_USERNAME}:${RALLY_PASSWORD}" \
+	"${RALLY_URL}/slm/webservice/v2.0/security/authorize" \
+	-c authcookie.txt
 printf "\n\n"
 
 # Attempting Restore
