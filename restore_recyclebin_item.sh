@@ -13,18 +13,19 @@
 # IMPORTANT!! PLEASE READ!! #
 #############################
 #
-# Note: Recycle Bin items cannot be restored using Rally's REST webservices API
+# Note: Rally's REST webservices API does not include support for restoring 
+# items from the Recycle Bin.
 # This curl script is intended to provide a more convenient means of
 # restoring an item with a known ObjectID and Formatted ID from the
 # Rally Recycle Bin, without having to navigate through the Rally Recycle Bin
 # UI (which frequently contains thousands of items), in order to find the
 # item and restore via the UI.
-
+#
 # This script uses an un-documented and un-supported restore endpoint that is
-# intended to be accessed from a web browser client. The endpoint used by
-# this script is subject to change and as a result this script could break
-# with no prior notice.
-
+# intended to be accessed only from a web browser client via the Rally UI.
+# The endpoint used by this script is subject to change and as a result 
+# this script could break without any prior notice.
+#
 # In addition, because it does not use an official webservices endpoint,
 # the script cannot ascertain the success/failure of the restore attempt
 # from the server response. Thus you will need to look in the Rally UI
