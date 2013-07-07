@@ -100,7 +100,7 @@ echo "Recycle Bin Item ObjectID: ${RESTORE_OID}"
 echo "================================================================"
 printf "\n\n"
 
-# Strip out Rally hostname
+# Strip out Rally hostname from URL for later use in request headers
 RALLY_HOST=`echo ${RALLY_URL} | awk -F "/" '{print $3}'`
 
 # Form Restore URL
