@@ -21,7 +21,7 @@ $my_workspace      = "My Workspace"
 $wsapi_version     = "1.43"
 
 $my_output_file         = "recyclebin.csv"
-$recyclebin_fields      =  %w{FormattedID ObjectID DeletionDate Name DeletedBy Type Ref}
+$recyclebin_fields      =  %w{FormattedID ObjectID DeletionDate Name DeletedBy Type Ref RestoreLink}
 
 if $my_delim == nil then $my_delim = "," end
 
@@ -94,6 +94,7 @@ begin
     item_deleted_by = this_recycle_bin_item["DeletedBy"]._refObjectName
     item_type = this_recycle_bin_item["Type"]
     item_ref = this_recycle_bin_item["_ref"]
+    item_restore_link = "#{$my_base_url}/recyclebin/restore.sp?oid=#{item_oid}"
 
     data << item_id
     data << item_oid
@@ -102,6 +103,7 @@ begin
     data << item_deleted_by
     data << item_type
     data << item_ref
+    data << item_restore_link
 
     recyclebin_csv << CSV::Row.new($recyclebin_fields, data)
 
