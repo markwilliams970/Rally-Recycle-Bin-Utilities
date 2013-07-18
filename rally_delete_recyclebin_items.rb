@@ -48,6 +48,7 @@ def delete_recycle_bin_entry(header, row)
   item_deleted_by                 = row[header[4]].strip
   item_type                       = row[header[5]].strip
   item_ref                        = row[header[6]].strip
+  item_restore_url                = row[header[7]].strip
 
   this_recycle_bin_item = {}
   this_recycle_bin_item["ObjectID"] = item_object_id
