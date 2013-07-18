@@ -68,6 +68,7 @@ def delete_recycle_bin_entry(header, row)
   rescue => ex
     puts "Error occurred trying to delete: #{item_formatted_id}: #{item_name}"
     puts ex
+    puts ex.msg
     puts ex.backtrace
   end
 end
