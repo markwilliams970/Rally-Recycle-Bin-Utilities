@@ -59,7 +59,7 @@ def delete_recycle_bin_entry(header, row)
   
   begin
     really_delete = [(print "Really delete? [N/y]:"), gets.rstrip][1]
-    if really_delete == affirmative_answer then
+    if really_delete.downcase == affirmative_answer then
       delete_result = @rally.delete(this_recycle_bin_item["_ref"])
       puts "DELETED #{item_formatted_id}: #{item_name}"
     else
