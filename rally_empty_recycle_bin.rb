@@ -80,7 +80,7 @@ begin
     item_type = this_recycle_bin_item["Type"]
     puts "Deleting Item #{item_formatted_id}, #{item_type}: #{item_name}..."
     puts this_recycle_bin_item["_ref"]
-    really_delete = [(print "Really delete? [Y/n]:"), gets.rstrip][1]
+    really_delete = [(print "Really delete? [N/y]:"), gets.rstrip][1]
 
     if really_delete == affirmative_answer then
       begin
