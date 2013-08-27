@@ -68,7 +68,7 @@ begin
 
   number_processed = 0
   number_deleted = 0
-  affirmative_answer = "Y"
+  affirmative_answer = "y"
 
   recycle_bin_query_results.each do | this_recycle_bin_item |
 
@@ -82,7 +82,7 @@ begin
     puts this_recycle_bin_item["_ref"]
     really_delete = [(print "Really delete? [N/y]:"), gets.rstrip][1]
 
-    if really_delete == affirmative_answer then
+    if really_delete.downcase == affirmative_answer then
       begin
         delete_result = @rally.delete(this_recycle_bin_item["_ref"])
         puts "DELETED #{item_formatted_id}: #{item_name}"
