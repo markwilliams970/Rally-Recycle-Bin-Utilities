@@ -39,7 +39,7 @@ if FileTest.exist?( my_vars ) then require my_vars end
 
 def delete_recycle_bin_entry(header, row)
   
-  affirmative_answer = "Y"
+  affirmative_answer = "y"
   
   item_formatted_id               = row[header[0]].strip
   item_object_id                  = row[header[1]].strip
