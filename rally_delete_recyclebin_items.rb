@@ -19,7 +19,7 @@ $my_base_url       = "https://rally1.rallydev.com/slm"
 $my_username       = "user@company.com"
 $my_password       = "password"
 $my_workspace      = "My Workspace"
-$wsapi_version     = "1.43"
+$wsapi_version     = "v2.0"
 
 # File containing CSV list of items to delete from Recycle Bin
 $filename          = "recyclebin_todelete.csv"
@@ -31,7 +31,7 @@ $filename          = "recyclebin_todelete.csv"
 $headers                            = RallyAPI::CustomHttpHeader.new()
 $headers.name                       = "Rally Delete Recycle Bin Items"
 $headers.vendor                     = "Rally Labs"
-$headers.version                    = "0.50"
+$headers.version                    = "0.51"
 
 # Load (and maybe override with) my personal/private variables from a file...
 my_vars= File.dirname(__FILE__) + "/my_vars.rb"

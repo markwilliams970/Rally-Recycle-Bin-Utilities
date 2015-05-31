@@ -18,7 +18,7 @@ $my_base_url       = "https://rally1.rallydev.com/slm"
 $my_username       = "user@company.com"
 $my_password       = "password"
 $my_workspace      = "My Workspace"
-$wsapi_version     = "1.43"
+$wsapi_version     = "v2.0"
 
 $my_output_file         = "recyclebin.csv"
 $recyclebin_fields      =  %w{FormattedID ObjectID DeletionDate Name DeletedBy Type Ref RestoreLink}
@@ -32,7 +32,7 @@ if $my_delim == nil then $my_delim = "," end
 $headers                            = RallyAPI::CustomHttpHeader.new()
 $headers.name                       = "Rally Recycle Bin Report"
 $headers.vendor                     = "Rally Labs"
-$headers.version                    = "0.50"
+$headers.version                    = "0.51"
 
 # Load (and maybe override with) my personal/private variables from a file...
 my_vars= File.dirname(__FILE__) + "/my_vars.rb"
@@ -53,7 +53,7 @@ begin
 
   # Query for all Recycle Bin Items
   recycle_bin_query = RallyAPI::RallyQuery.new()
-  recycle_bin_query.type = :recyclebin
+  recycle_bin_query.type = :recyclebinentry
   recycle_bin_query.fetch = true
 
   recycle_bin_query_results = @rally.find(recycle_bin_query)
